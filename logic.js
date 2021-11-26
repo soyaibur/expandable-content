@@ -3,18 +3,36 @@
 
 
 
-// .....All Element Selection will be undernith here...........
+
+// .....All Element Selections will be undernith here...........
+const expandableButtons = document.querySelectorAll('[data-expandable-button]')
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 
 
 // .....All EventListener go undernith here...........
+expandableButtons.forEach( button =>{
+    button.addEventListener('click',toggleText)
+})
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-// ......All Function will go here undernith..........
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// ......All Function will go here undernith.......
+function toggleText(e){
+  expandableElement = e.target.closest('[data-expandable]')
+  expandableElement.classList.toggle('expanded')
+  setExpandedButtonText(e.target)
+}
+
+function setExpandedButtonText(button){
+ const expandableElement = button.closest('[data-expandable]')
+ const Axpanded = expandableElement.classList.contains('expanded')
+ button.innerText = Axpanded ? 'Read Less' : 'Read More'
+}
+// ::::::::::::::::::::::::::::::::::::::::::::::::
 
 //All code will be deleted here.............
 function printOut(text){
